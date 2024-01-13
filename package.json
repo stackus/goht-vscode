@@ -1,0 +1,45 @@
+{
+  "name": "hamlet-go-vscode",
+  "displayName": "Hamlet (Go+Haml)",
+  "description": "Provides Hamlet (Go+Haml) Syntax Highlighting",
+  "publisher": "stackus",
+  "repository": {
+    "url": "https://github.com/stackus/hamlet-go-vscode"
+  },
+  "icon": "hamlet.png",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "hamlet-go",
+        "aliases": [
+          "Hamlet (Go)",
+          "Hamlet",
+          "hamlet-go"
+        ],
+        "extensions": [
+          ".hmlt"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hamlet-go",
+        "scopeName": "source.hamlet-go",
+        "path": "./syntaxes/hamlet-go.tmLanguage.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.go": "go",
+          "meta.embedded.block.javascript": "javascript",
+          "meta.embedded.block.css": "css"
+        }
+      }
+    ]
+  }
+}
