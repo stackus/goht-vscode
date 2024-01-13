@@ -10,9 +10,4 @@ This extension provides syntax highlighting for the Hamlet file from [Hamlet](ht
 - none at this time
 
 ## Known Issues
-- Go language server support has not been added (may be a future addition)
-## Release Notes
-
-### 1.0.0
-
-Initial release of hamlet-go-vscode
+- Go language server support has not been added (might be a future addition)
