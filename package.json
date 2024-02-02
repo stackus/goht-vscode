@@ -7,10 +7,40 @@
     "url": "https://github.com/stackus/hamlet-go-vscode"
   },
   "icon": "hamlet.png",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "main": "./out/main.js",
   "engines": {
     "vscode": "^1.85.0"
   },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "dependencies": {
+    "vscode-languageclient": "9.0.1"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  },
+  "activeationEvents": [
+    "workspaceContains:**/*.hmlt"
+  ],
   "categories": [
     "Programming Languages"
   ],
@@ -40,6 +70,26 @@
           "meta.embedded.block.css": "css"
         }
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Hamlet (Go+Haml)",
+      "properties": {
+        "hamlet-go.logFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path and file name of where to log interactions with the Hamlet-Go LSP"
+        },
+        "hamlet-go.traceClient": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include RPC calls to and from the Hamlet LSP in the log"
+        },
+        "hamlet-go.traceGoPls": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include RPC calls to and from the Go LSP in the log"
+        }
+      }
+    }
   }
 }
