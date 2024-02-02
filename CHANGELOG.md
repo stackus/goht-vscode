@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v0.2.0](https://github.com/stackus/hamlet/compare/v0.1.0...v0.2.0) - 2024-02-01
+## [v0.2.0](https://github.com/stackus/hamlet-go-vscode/compare/v0.1.0...v0.2.0) - 2024-02-01
 
 ### Added
 - **LSP**: Added support for LSP integration with Hamlet.
