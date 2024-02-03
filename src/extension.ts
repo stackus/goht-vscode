@@ -24,7 +24,7 @@ type Config = {
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
-export async function activate(context: vscode.ExtensionContext) {
+export async function activate(_context: vscode.ExtensionContext) {
     try {
         const c = loadConfig();
         const lc = await newLanguageClient(c);
