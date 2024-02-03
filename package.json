@@ -1,13 +1,13 @@
 {
-  "name": "hamlet-go-vscode",
-  "displayName": "Hamlet (Go+Haml)",
-  "description": "Provides Hamlet (Go+Haml) Syntax Highlighting",
+  "name": "goht-vscode",
+  "displayName": "GoHT",
+  "description": "Enables GoHT language support",
   "publisher": "stackus",
   "repository": {
-    "url": "https://github.com/stackus/hamlet-go-vscode"
+    "url": "https://github.com/stackus/goht-vscode"
   },
-  "icon": "hamlet.png",
-  "version": "0.2.0",
+  "icon": "goht.png",
+  "version": "0.3.0",
   "main": "./out/main.js",
   "engines": {
     "vscode": "^1.85.0"
@@ -39,7 +39,7 @@
     "@vscode/test-electron": "^2.3.8"
   },
   "activeationEvents": [
-    "workspaceContains:**/*.hmlt"
+    "workspaceContains:**/*.goht"
   ],
   "categories": [
     "Programming Languages"
@@ -47,23 +47,25 @@
   "contributes": {
     "languages": [
       {
-        "id": "hamlet-go",
+        "id": "goht",
         "aliases": [
-          "Hamlet (Go)",
-          "Hamlet",
-          "hamlet-go"
+          "GoHT"
         ],
         "extensions": [
-          ".hmlt"
+          ".goht"
         ],
+        "icon": {
+          "light": "./goht.png",
+          "dark": "./goht.png"
+        },
         "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
       {
-        "language": "hamlet-go",
-        "scopeName": "source.hamlet-go",
-        "path": "./syntaxes/hamlet-go.tmLanguage.json",
+        "language": "goht",
+        "scopeName": "source.goht",
+        "path": "./syntaxes/goht.tmLanguage.json",
         "embeddedLanguages": {
           "meta.embedded.block.go": "go",
           "meta.embedded.block.javascript": "javascript",
@@ -72,19 +74,19 @@
       }
     ],
     "configuration": {
-      "title": "Hamlet (Go+Haml)",
+      "title": "GoHT",
       "properties": {
-        "hamlet-go.logFile": {
+        "goht.logFile": {
           "type": "string",
           "default": "",
-          "description": "Path and file name of where to log interactions with the Hamlet-Go LSP"
+          "description": "Path and file name of where to log interactions with the GoHT LSP"
         },
-        "hamlet-go.traceClient": {
+        "goht.traceClient": {
           "type": "boolean",
           "default": false,
-          "description": "Include RPC calls to and from the Hamlet LSP in the log"
+          "description": "Include RPC calls to and from the Goht LSP in the log"
         },
-        "hamlet-go.traceGoPls": {
+        "goht.traceGoPls": {
           "type": "boolean",
           "default": false,
           "description": "Include RPC calls to and from the Go LSP in the log"

@@ -31,7 +31,7 @@ export async function activate(context: vscode.ExtensionContext) {
         await lc.start()
     } catch (err) {
         const msg = err && err as Error ? (err as Error).message : 'unknown'
-        vscode.window.showErrorMessage(`error initializing hamlet-go LSP: ${msg}`);
+        vscode.window.showErrorMessage(`error initializing goht LSP: ${msg}`);
     }
 }
 
@@ -40,7 +40,7 @@ export function deactivate() {
 }
 
 function loadConfig(): Config {
-    const config = vscode.workspace.getConfiguration('hamlet-go');
+    const config = vscode.workspace.getConfiguration('goht');
     return {
         logFile: config.get('logFile', ''),
         traceClient: config.get('traceClient', false),
@@ -56,7 +56,7 @@ function loadConfig(): Config {
             if (this.traceGoPls) {
                 args.push('--traceGoPls');
             }
-            // vscode.window.showInformationMessage(`Starting LSP: hamlet-go with ${args.join(' ')}`)
+            // vscode.window.showInformationMessage(`Starting LSP: goht with ${args.join(' ')}`)
             return args;
         }
     } as Config;
@@ -69,13 +69,13 @@ const crashLimit = 10;
 async function newLanguageClient(c: Config): Promise<LanguageClient> {
     const documentSelector = [
         {
-            language: "hamlet-go",
+            language: "goht",
             scheme: "file",
         }
     ]
 
     const serverOptions: ServerOptions = {
-        command: "hamlet",
+        command: "goht",
         args: ["lsp", ...c.toArgs()]
     };
 
@@ -95,7 +95,7 @@ async function newLanguageClient(c: Config): Promise<LanguageClient> {
         errorHandler: {
             error(error: Error, message: Message | undefined, count: number | undefined): ErrorHandlerResult | Promise<ErrorHandlerResult> {
                 vscode.window.showErrorMessage(
-                    `error communicating with the hamlet language server: ${error}: ${message}`
+                    `error communicating with the goht language server: ${error}: ${message}`
                 )
                 return {
                     action: (count || 0) < crashLimit ? ErrorAction.Continue : ErrorAction.Shutdown,
@@ -193,5 +193,5 @@ async function newLanguageClient(c: Config): Promise<LanguageClient> {
         }
     };
 
-    return new LanguageClient("hamlet-go", serverOptions, clientOptions, false);
+    return new LanguageClient("goht", serverOptions, clientOptions, false);
 }

@@ -1,10 +1,12 @@
-# Hamlet (Go+Haml)
+# GoHT for VSCode
 
-This extension provides syntax highlighting for the Hamlet file from [Hamlet](https://github.com/stackus/hamlet). It also provides language server support for both Hamlet and Go.
+![GoHT](goht_header.png)
+
+This extension provides IDE features and syntax highlighting for the .goht extension from [GoHT](https://github.com/stackus/goht). It also provides language server support for both GoHT and Go.
 
 ## Features
 - Syntax Highlighting
-- Language Server Support for Hamlet and Go
+- Language Server Support for GoHT and Go
 
 ## Requirements
 
@@ -15,10 +17,10 @@ This extension provides syntax highlighting for the Hamlet file from [Hamlet](ht
 go install golang.org/x/tools/gopls@latest
 ```
 
-**Hamlet**: You should install the latest version of [Hamlet](https://github.com/stackus/hamlet) which will include the LSP. You may manually install it by running:
+**GoHT**: You should install the latest version of [GoHT](https://github.com/stackus/goht) which will include the LSP. You may manually install it by running:
 
 ```bash
-go install github.com/stackus/hamlet/cmd/hamlet@latest
+go install github.com/stackus/goht/cmd/goht@latest
 ```
 
 #### Note
